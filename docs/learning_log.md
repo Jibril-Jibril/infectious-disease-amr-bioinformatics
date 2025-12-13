@@ -4,3 +4,10 @@
 - Set up WSL and GitHub
 - Created first bioinformatics repository
 - Learned basic Linux navigation
+
+## 2025-12-14
+- Learned to view large files with less, head and tail
+- Used grep to search FASTA files
+	-i for case insensitive search
+	-v for invert match → select lines that do not contain specified character>
+- Used pipes to combine commands

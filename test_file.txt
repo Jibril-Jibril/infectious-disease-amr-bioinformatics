@@ -1,0 +1,2 @@
+Hello bioinformatics
+Learning Linux is essential
