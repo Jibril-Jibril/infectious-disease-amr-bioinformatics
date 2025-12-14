@@ -1,0 +1,6 @@
+gene_id	product	resistance
+geneA	beta-lactamase	AMR
+geneB	DNA gyrase	NA
+geneC	tetracycline efflux	AMR
+geneD	hypothetical protein	NA
+geneE	aminoglycoside acetyltransferase	AMR
