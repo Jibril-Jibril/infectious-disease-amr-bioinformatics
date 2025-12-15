@@ -16,3 +16,8 @@
 - Used cut to extract columns from tabular files
 - Used sort and uniq to summarise annotations
 - Counted AMR-associated genes from annotation data
+
+## 2025-12-15
+- Learned to use variables and loops in Bash
+- Automated gene counting across multiple FASTA files
+- Wrote my first reusable bioinformatics script

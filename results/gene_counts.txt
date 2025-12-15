@@ -1,0 +1,3 @@
+data/sample1.fasta: 2
+data/sample2.fasta: 2
+data/sample3.fasta: 2
