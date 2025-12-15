@@ -191,3 +191,21 @@ git log --oneline
 * **command_log.md** → keep what matters
 * **GitHub** → permanent professional record
 
+## 15/12/2025 – Bash loops and automation
+
+```bash
+GENOME=data/example.fasta
+for f in data/sample*.fasta
+do
+  echo "File: $f"
+  grep ">" $f | wc -l
+done
+
+for f in data/sample*.fasta
+do
+  echo -n "$f: " # -n drops the additional line created as part of the echo command forcing the output of the next command to appear on the same line 
+  grep ">" $f | wc -l
+done > results/gene_counts.txt
+
+chmod +x scripts/count_genes.sh
+./scripts/count_genes.sh
