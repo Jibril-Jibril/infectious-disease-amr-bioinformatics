@@ -191,7 +191,7 @@ git log --oneline
 * **command_log.md** → keep what matters
 * **GitHub** → permanent professional record
 
-## 15/12/2025 – Bash loops and automation
+## 15/12/2025 – Variables, loops and automation, and TSV outputs
 
 ```bash
 GENOME=data/example.fasta
@@ -209,3 +209,17 @@ done > results/gene_counts.txt
 
 chmod +x scripts/count_genes.sh
 ./scripts/count_genes.sh
+
+--------------------------------
+DATA=data
+OUT=results/gene_counts.tsv
+
+echo -e "sample\tgene_count" > "$OUT"
+
+for f in $DATA/*.fasta
+do
+  SAMPLE=$(basename "$f" .fasta)
+  GENES=$(grep ">" "$f" | wc -l)
+  echo -e "$SAMPLE\t$GENES" >> "$OUT"
+done
+
