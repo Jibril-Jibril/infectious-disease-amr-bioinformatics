@@ -223,3 +223,30 @@ do
   echo -e "$SAMPLE\t$GENES" >> "$OUT"
 done
 
+
+## Day 5 – FASTQ structure QC simulaton and logic
+
+# calculate number of reads
+wc -l data/fastq/sample_R1.fastq | awk '{print $1/4}'
+
+# extract sequences only (2nd line of every read)
+sed -n '2p;6p;10p' data/fastq/sample_R1.fastq
+
+# Simulate a QC check: read lengths
+awk 'NR%4==2 {print length($0)}' data/fastq/sample_R1.fastq
+
+#Simulate a QC check: see low-quality reads (!)
+awk 'NR%4==0 {print}' data/fastq/sample_R1.fastq
+#prints line numbers of bad quality lines
+awk 'NR%4==0 && /!/ {print NR}' data/fastq/sample_R1.fastq
+
+# Count low-quality reads
+awk 'NR%4==0 && $0 ~ /!/ {count++} END {print count}' data/fastq/sample_R1.fastq
+
+# Sanity check FASTQ integrity - print ok if FASTQ file is valid, print BROKEN if it is not
+# It is valid if total number of lines is divisible by 4
+wc -l data/fastq/sample_R1.fastq | awk '{if ($1 % 4 == 0) print "OK"; else print "BROKEN"}'
+
+# filtering reads (conceptual pipeline)
+awk 'NR%4==2 {seq=$0; len=length($0)}
+NR%4==0 {qual=$0; if (len>=10 && qual !~ /!/) print "KEEP"; else print "DROP"}' data/fastq/sample_R1.fastq

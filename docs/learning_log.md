@@ -21,3 +21,8 @@
 - Learned to use variables and loops in Bash
 - Automated gene counting across multiple FASTA files
 - Wrote my first reusable bioinformatics script
+
+## Day 5 Part B – QC and trimming logic
+- Defined QC rules (length & quality)
+- Used awk to simulate read filtering
+- Understood why QC tools are necessary
