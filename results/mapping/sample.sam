@@ -1,0 +1,6 @@
+@SQ	SN:geneA	LN:32
+@SQ	SN:geneB	LN:32
+@PG	ID:bwa	PN:bwa	VN:0.7.17-r1188	CL:bwa mem data/reference/ref.fasta data/fastq/sample_R1.fastq
+read1	4	*	0	0	*	*	0	0	ATGCGTACGTAGCTAG	IIIIIIIIIIIIIIII	AS:i:0	XS:i:0
+read2	4	*	0	0	*	*	0	0	ATGCGTACGTAG	IIII!!!!IIII	AS:i:0	XS:i:0
+read3	4	*	0	0	*	*	0	0	ATGCGTAC	!!!!!!!!	AS:i:0	XS:i:0

@@ -26,3 +26,12 @@
 - Defined QC rules (length & quality)
 - Used awk to simulate read filtering
 - Understood why QC tools are necessary
+
+## Day 7 Part B — Read mapping and SAM/BAM
+- Created toy reference FASTA
+- Indexed reference with bwa
+- Created toy FASTQ reads
+- Mapped reads using bwa mem
+- Converted SAM to sorted/indexed BAM
+- Inspected alignments and mapping quality
+- Identified unmapped reads (FLAG 4) due to short read length

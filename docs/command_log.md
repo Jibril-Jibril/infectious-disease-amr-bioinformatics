@@ -250,3 +250,32 @@ wc -l data/fastq/sample_R1.fastq | awk '{if ($1 % 4 == 0) print "OK"; else print
 # filtering reads (conceptual pipeline)
 awk 'NR%4==2 {seq=$0; len=length($0)}
 NR%4==0 {qual=$0; if (len>=10 && qual !~ /!/) print "KEEP"; else print "DROP"}' data/fastq/sample_R1.fastq
+
+## Day 6 Part B — FastQC & fastp
+
+# FastQC — Diagnose your reads
+mkdir -p results/fastqc
+fastqc -o results/fastqc data/fastq/sample_R1.fastq
+
+# Open html file to view report
+xdg-open results/fastqc/sample_R1_fastqc.html
+
+# fastp — Automate trimming & filtering
+mkdir -p results/fastp
+fastp -i data/fastq/sample_R1.fastq \
+      -o results/fastp/sample_R1_trimmed.fastq \
+      -h results/fastp/sample_R1_fastp_report.html \
+      -j results/fastp/sample_R1_fastp_report.json
+
+# Inspect the fastp report
+xdg-open results/fastp/sample_R1_fastp_report.html
+
+# Verify QC - run fastqc
+fastqc -o results/fastqc results/fastp/sample_R1_trimmed.fastq
+
+# Quality control loop
+Raw FASTQ → FastQC → fastp → FastQC
+- Ran FastQC to diagnose read quality and adapter content
+- Ran fastp to trim low-quality bases and remove adapters
+- Verified trimming by running FastQC again
+- Observed that reads identified manually on Day 5 as low quality or too short were removed

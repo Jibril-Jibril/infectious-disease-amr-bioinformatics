@@ -1,0 +1,38 @@
+## Day 7 — Read mapping with bwa and SAM interpretation
+
+#- Create toy reference FASTA (geneA, geneB)
+mkdir -p data/reference
+nano data/reference/ref.fasta
+
+#- Index reference using bwa index
+bwa index data/reference/ref.fasta
+
+#- Create toy FASTQ reads
+mkdir -p data/fastq
+nano data/fastq/sample_R1.fastq
+
+#- Ran bwa mem for read mapping
+mkdir -p results/mapping
+bwa mem data/reference/ref.fasta data/fastq/sample_R1.fastq > results/mapping/sample.sam
+
+#- Interprete SAM output
+head results/mapping/sample.sam
+
+#- Convert SAM → BAM (compressed)
+samtools view -bS results/mapping/sample.sam > results/mapping/sample.bam
+
+#- Sort the BAM file
+samtools sort results/mapping/sample.bam -o results/mapping/sample.sorted.bam
+
+#- Index the BAM file
+samtools index results/mapping/sample.sorted.bam
+
+##- Inspect alignments (practical checks)
+#- How many reads mapped?
+samtools view -c results/mapping/sample.sorted.bam
+
+#- View alignments with reference names
+samtools view results/mapping/sample.sorted.bam
+
+
+#- Identified unmapped reads (FLAG 4) due to short read length
