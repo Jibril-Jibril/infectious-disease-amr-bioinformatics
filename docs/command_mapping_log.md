@@ -38,8 +38,15 @@ samtools view results/mapping/sample.sorted.bam
 #- Identified unmapped reads (FLAG 4) due to short read length
 
 ## Day 8 — Coverage, depth, and AMR evidence thresholds
-- Defined read depth and gene coverage
-- Interpreted mapping evidence from SAM files
+#- Defined read depth and gene coverage
+grep -v "^@" results/mapping/sample.sam | awk '$2 != 4' | wc -l
+
+#- Interpreted mapping evidence from SAM files
+
 - Reasoned about coverage thresholds in AMR detection
-- Estimated coverage manually and using awk
+
+#- Estimated coverage manually and using awk
+grep -v "^@" results/mapping/sample.sam \
+| awk '$2 != 4 {gsub(/M/, "", $6); sum += $6} END {print sum}'
+
 - Understood limitations of naive CIGAR-based coverage
