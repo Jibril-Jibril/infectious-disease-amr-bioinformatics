@@ -35,3 +35,14 @@
 - Converted SAM to sorted/indexed BAM
 - Inspected alignments and mapping quality
 - Identified unmapped reads (FLAG 4) due to short read length
+
+## Day 9 Assembly vs mapping for AMR detection and variant reasoning
+Why assembly improves gene-based AMR detection
+Why mapping is essential for SNP and low-frequency variants
+How real AMR pipelines combine both approaches
+
+## Day 10 AMR tools, evidence thresholds, and interpretation
+Understand why thresholds exist
+Can justify tool choice
+Can defend discrepancies between tools
+Think like a reviewer, not just a user
