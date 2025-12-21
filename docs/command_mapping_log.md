@@ -50,3 +50,8 @@ grep -v "^@" results/mapping/sample.sam \
 | awk '$2 != 4 {gsub(/M/, "", $6); sum += $6} END {print sum}'
 
 - Understood limitations of naive CIGAR-based coverage
+
+## Assembly vs mapping for AMR detection and variant reasoning
+- Why assembly improves gene-based AMR detection
+- Why mapping is essential for SNP and low-frequency variants
+- How real AMR pipelines combine both approaches
